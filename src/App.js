@@ -1,27 +1,14 @@
 import React from 'react';
-import SwitchNavigator from "./navigation/Navigation";
-import serviceWrapper from "./network/Services";
+import SwitchNavigator from './navigation/Navigation';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      // data: [],
-    };
-    // console.log(this.props);
-
   }
 
   render() {
-    return (
-      // <SafeAreaView>
-        // <Login></Login>
-        <SwitchNavigator></SwitchNavigator>
-        // <Dashboard></Dashboard>
-      // </SafeAreaView>
-    );
+    return <SwitchNavigator></SwitchNavigator>;
   }
 }
 
-
-export default serviceWrapper(App);
+export default App;
