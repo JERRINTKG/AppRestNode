@@ -19,6 +19,7 @@ import imgSearch from '../../assets/images/insta-search.png';
 import imgAdd from '../../assets/images/insta-add.png';
 import imgLove from '../../assets/images/insta-love.png';
 import imgProfile from '../../assets/images/insta-profile.png';
+import imgDots from '../../assets/images/insta-dots.png';
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Home extends React.Component {
     this.state = {
       data: [
         {
+          id:0,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
@@ -34,6 +36,7 @@ class Home extends React.Component {
           postDescription: ''
         },
         {
+          id:1,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
@@ -42,6 +45,7 @@ class Home extends React.Component {
           postDescription: ''
         },
         {
+          id:2,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
@@ -50,6 +54,7 @@ class Home extends React.Component {
           postDescription: ''
         },
         {
+          id:3,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
@@ -81,10 +86,14 @@ class Home extends React.Component {
                   data={data}
                   renderItem={(item, index) => (
                     <View style={styles.postContainer}>
-                      <Text>{item.userImage}</Text>
+                      <View style={styles.postHeader}>
+                        <Image source={item.userImage} style={styles.userAvatar}></Image>
+                        <Image source={imgDots} style={{width:20,height:20}}></Image>
+                        
+                      </View>
                     </View>
                   )}
-                  keyExtractor={item => item.userName}
+                  keyExtractor={item => item.id.toString()}
                 />
               </ScrollView>
           </View>
@@ -151,10 +160,27 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   postContainer: {
-    backgroundColor: 'red',
     height: 500,
-    marginTop:10
+    borderTopColor:"red",
+    borderWidth:1
   },
+  postHeader:{
+    flexDirection: 'row',
+    borderWidth:1,
+    height:60,
+    paddingHorizontal:15,
+    justifyContent:"space-between",
+    alignItems: 'center',
+
+  },
+  userAvatar:{
+    backgroundColor:"red",
+    width:50,
+    height:50,
+    borderColor:"black",
+    borderWidth:2,
+    borderRadius:25,
+  }
 });
 
 export default serviceWrapper(Home);
