@@ -1,15 +1,15 @@
 import React from 'react';
 import {
   SafeAreaView,
-  Text,
-  Image,
   View,
   StyleSheet,
-  TouchableOpacity,
-  ScrollView,
+  Image,
   FlatList,
+  TouchableOpacity,
+  Text,
 } from 'react-native';
 import serviceWrapper from '../../network/Services';
+import imgDots from '../../assets/images/insta-dots.png';
 import imgText from '../../assets/images/insta-text.png';
 import imgCamera from '../../assets/images/insta-camera.png';
 import imgSend from '../../assets/images/insta-send.png';
@@ -19,105 +19,106 @@ import imgSearch from '../../assets/images/insta-search.png';
 import imgAdd from '../../assets/images/insta-add.png';
 import imgLove from '../../assets/images/insta-love.png';
 import imgProfile from '../../assets/images/insta-profile.png';
-import imgDots from '../../assets/images/insta-dots.png';
-
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [
         {
-          id:0,
+          id: 0,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
           postUrl: '',
           likesCount: 65,
-          postDescription: ''
+          postDescription: '',
         },
         {
-          id:1,
+          id: 1,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
           postUrl: '',
           likesCount: 65,
-          postDescription: ''
+          postDescription: '',
         },
         {
-          id:2,
+          id: 2,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
           postUrl: '',
           likesCount: 65,
-          postDescription: ''
+          postDescription: '',
         },
         {
-          id:3,
+          id: 3,
           userImage: '',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
           postUrl: '',
           likesCount: 65,
-          postDescription: ''
-        }
-      ]
+          postDescription: '',
+        },
+      ],
     };
   }
 
   render() {
     let {data} = this.state;
+
     return (
       <SafeAreaView style={{flex: 1}}>
-        <View style={styles.container}>
-          <View style={styles.headerTab}>
-            <TouchableOpacity>
-              <Image source={imgCamera} style={styles.icon}></Image>
-            </TouchableOpacity>
-            <Image source={imgText} style={styles.imgText}></Image>
-            <TouchableOpacity>
-              <Image source={imgSend} style={styles.icon}></Image>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.bodyContainer}>
-              <ScrollView>
-                <FlatList
-                  data={data}
-                  renderItem={(item, index) => (
-                    <View style={styles.postContainer}>
-                      <View style={styles.postHeader}>
-                        <Image source={item.userImage} style={styles.userAvatar}></Image>
-                        <Image source={imgDots} style={{width:20,height:20}}></Image>
-                        
-                      </View>
-                    </View>
-                  )}
-                  keyExtractor={item => item.id.toString()}
-                />
-              </ScrollView>
-          </View>
-          <View style={styles.footerTab}>
-            <TouchableOpacity>
-              <Image source={imgHome} style={styles.icon}></Image>
-            </TouchableOpacity>
+        <View style={styles.headerTab}>
+          <TouchableOpacity>
+            <Image source={imgCamera} style={styles.icon}></Image>
+          </TouchableOpacity>
+          <Image source={imgText} style={styles.imgText}></Image>
+          <TouchableOpacity>
+            <Image source={imgSend} style={styles.icon}></Image>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.bodyContainer}>
+          <FlatList
+            data={data}
+            renderItem={(item, index) => (
+              <View style={styles.postContainer}>
+                {/* <View style={styles.postHeader}>
+                  <Image
+                    source={item.userImage}
+                    style={styles.userAvatar}></Image>
+                  <Image
+                    source={imgDots}
+                    style={{width: 20, height: 20}}></Image>
+                </View> */}
 
-            <TouchableOpacity>
-              <Image source={imgSearch} style={styles.icon}></Image>
-            </TouchableOpacity>
+                {/* <View style={styles.postImage}></View> */}
+                {/* <View style={styles.postFooter}></View> */}
+              </View>
+            )}
+            keyExtractor={item => item.id.toString()}
+          />
+        </View>
+        <View style={styles.footerTab}>
+          <TouchableOpacity>
+            <Image source={imgHome} style={styles.icon}></Image>
+          </TouchableOpacity>
 
-            <TouchableOpacity>
-              <Image source={imgAdd} style={styles.icon}></Image>
-            </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={imgSearch} style={styles.icon}></Image>
+          </TouchableOpacity>
 
-            <TouchableOpacity>
-              <Image source={imgLove} style={styles.icon}></Image>
-            </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={imgAdd} style={styles.icon}></Image>
+          </TouchableOpacity>
 
-            <TouchableOpacity>
-              <Image source={imgProfile} style={styles.icon}></Image>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity>
+            <Image source={imgLove} style={styles.icon}></Image>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Image source={imgProfile} style={styles.icon}></Image>
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
     );
@@ -125,12 +126,9 @@ class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   headerTab: {
+    flex: 1,
     backgroundColor: 'white',
-    height: 55,
     elevation: 3,
     flexDirection: 'row',
     alignItems: 'center',
@@ -138,48 +136,55 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   icon: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
   },
   imgText: {
     width: 120,
     height: 40,
   },
-  bodyContainer: {
-    flex: 1,
-    backgroundColor: 'white',
-  },
   footerTab: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
-    height: 50,
     borderTopWidth: 1,
     borderColor: '#E5E5E5',
     paddingHorizontal: 15,
   },
+  bodyContainer: {
+    flex: 14,
+    backgroundColor: 'white',
+  },
   postContainer: {
-    height: 500,
-    borderTopColor:"red",
-    borderWidth:1
+    flex: 1,
+    backgroundColor:"red"
   },
-  postHeader:{
+  postHeader: {
+    flex: 1,
     flexDirection: 'row',
-    borderWidth:1,
-    height:60,
-    paddingHorizontal:15,
-    justifyContent:"space-between",
+    borderWidth: 1,
+    paddingHorizontal: 15,
+    justifyContent: 'space-between',
     alignItems: 'center',
-
   },
-  userAvatar:{
-    backgroundColor:"red",
-    width:50,
-    height:50,
-    borderColor:"black",
-    borderWidth:2,
-    borderRadius:25,
+  postImage: {
+    flex: 15,
+    // height:500,
+    backgroundColor:"red"
+  },
+  postFooter:{
+    flex:1,
+    backgroundColor:"red"
+  },
+  userAvatar: {
+    backgroundColor: 'gray',
+    width: 50,
+    height: 50,
+    borderColor: 'black',
+    borderWidth: 2,
+    borderRadius: 25,
   }
 });
 
