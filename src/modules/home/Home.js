@@ -9,7 +9,7 @@ import {
   Text,
 } from 'react-native';
 import serviceWrapper from '../../network/Services';
-import imgDots from '../../assets/images/insta-dots.png';
+import { PostContainer } from "../../components/Home.components";
 import imgText from '../../assets/images/insta-text.png';
 import imgCamera from '../../assets/images/insta-camera.png';
 import imgSend from '../../assets/images/insta-send.png';
@@ -26,40 +26,76 @@ class Home extends React.Component {
       data: [
         {
           id: 0,
-          userImage: '',
+          postImage: 'https://images3.alphacoders.com/595/595064.jpg',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
-          postUrl: '',
+          userImage: '',
           likesCount: 65,
           postDescription: '',
         },
         {
           id: 1,
-          userImage: '',
+          postImage: 'https://images3.alphacoders.com/823/82317.jpg',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
-          postUrl: '',
+          userImage: '',
           likesCount: 65,
           postDescription: '',
         },
         {
           id: 2,
-          userImage: '',
+          postImage: 'https://images3.alphacoders.com/102/102727.jpg',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
-          postUrl: '',
+          userImage: '',
           likesCount: 65,
           postDescription: '',
         },
         {
           id: 3,
-          userImage: '',
+          postImage: 'https://images3.alphacoders.com/853/85305.jpg',
           userName: 'jerrintkg',
           userLocation: 'Trivandrum',
-          postUrl: '',
+          userImage: '',
           likesCount: 65,
           postDescription: '',
         },
+        {
+        id: 4,
+        postImage: 'https://images3.alphacoders.com/595/595064.jpg',
+        userName: 'jerrintkg',
+        userLocation: 'Trivandrum',
+        userImage: '',
+        likesCount: 65,
+        postDescription: '',
+      },
+      {
+        id: 5,
+        postImage: 'https://images5.alphacoders.com/485/485812.jpg',
+        userName: 'jerrintkg',
+        userLocation: 'Trivandrum',
+        userImage: '',
+        likesCount: 65,
+        postDescription: '',
+      },
+      {
+        id: 6,
+        postImage: 'https://images3.alphacoders.com/102/102727.jpg',
+        userName: 'jerrintkg',
+        userLocation: 'Trivandrum',
+        userImage: '',
+        likesCount: 65,
+        postDescription: '',
+      },
+      {
+        id: 7,
+        postImage: 'https://images5.alphacoders.com/485/485812.jpg',
+        userName: 'jerrintkg',
+        userLocation: 'Trivandrum',
+        userImage: '',
+        likesCount: 65,
+        postDescription: '',
+      },
       ],
     };
   }
@@ -82,19 +118,8 @@ class Home extends React.Component {
           <FlatList
             data={data}
             renderItem={(item, index) => (
-              <View style={styles.postContainer}>
-                {/* <View style={styles.postHeader}>
-                  <Image
-                    source={item.userImage}
-                    style={styles.userAvatar}></Image>
-                  <Image
-                    source={imgDots}
-                    style={{width: 20, height: 20}}></Image>
-                </View> */}
+                <PostContainer item={item} />
 
-                {/* <View style={styles.postImage}></View> */}
-                {/* <View style={styles.postFooter}></View> */}
-              </View>
             )}
             keyExtractor={item => item.id.toString()}
           />
@@ -159,17 +184,19 @@ const styles = StyleSheet.create({
   },
   postContainer: {
     flex: 1,
-    backgroundColor:"red"
+    // backgroundColor:"red"
   },
   postHeader: {
     flex: 1,
     flexDirection: 'row',
     borderWidth: 1,
     paddingHorizontal: 15,
+    paddingTop:5,
+    paddingBottom:5,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  postImage: {
+  userImage: {
     flex: 15,
     // height:500,
     backgroundColor:"red"
