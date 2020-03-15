@@ -1,14 +1,7 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  StyleSheet,
-  Image,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import { SafeAreaView } from 'react-native';
 import serviceWrapper from '../../network/Services';
-import { PostContainer, HomeHeader, HomeFooter } from "../../components/Home.components";
+import { PostList, HomeHeader, HomeFooter } from "../../components/Home.components";
 
 class Home extends React.Component {
   constructor(props) {
@@ -93,30 +86,15 @@ class Home extends React.Component {
 
   render() {
     let {data} = this.state;
-
     return (
       <SafeAreaView style={{flex: 1}}>
         <HomeHeader />
-        <View style={styles.bodyContainer}>
-          <FlatList
-            data={data}
-            renderItem={(item, index) => (
-                <PostContainer item={item} />
-            )}
-            keyExtractor={item => item.id.toString()}
-          />
-        </View>
+        <PostList post={data} />
         <HomeFooter />
       </SafeAreaView>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  bodyContainer: {
-    flex: 14,
-    backgroundColor: 'white',
-  },
-});
 
 export default serviceWrapper(Home);

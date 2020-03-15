@@ -1,12 +1,10 @@
 import React from 'react';
 import {
-  SafeAreaView,
   View,
   StyleSheet,
   Image,
   FlatList,
   TouchableOpacity,
-  Text,
 } from 'react-native';
 import imgText from '../assets/images/insta-text.png';
 import imgCamera from '../assets/images/insta-camera.png';
@@ -21,48 +19,46 @@ import imgLove from '../assets/images/insta-love.png';
 import imgProfile from '../assets/images/insta-profile.png';
 
 const HomeHeader = props => {
-  return(
+  return (
     <View style={styles.headerTab}>
-    <TouchableOpacity>
-      <Image source={imgCamera} style={styles.icon}></Image>
-    </TouchableOpacity>
-    <Image source={imgText} style={styles.imgText}></Image>
-    <TouchableOpacity>
-      <Image source={imgSend} style={styles.icon}></Image>
-    </TouchableOpacity>
-  </View>
+      <TouchableOpacity>
+        <Image source={imgCamera} style={styles.icon}></Image>
+      </TouchableOpacity>
+      <Image source={imgText} style={styles.imgText}></Image>
+      <TouchableOpacity>
+        <Image source={imgSend} style={styles.icon}></Image>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const HomeFooter = props => {
-
-  return(
+  return (
     <View style={styles.footerTab}>
-    <TouchableOpacity>
-      <Image source={imgHome} style={styles.icon}></Image>
-    </TouchableOpacity>
+      <TouchableOpacity>
+        <Image source={imgHome} style={styles.icon}></Image>
+      </TouchableOpacity>
 
-    <TouchableOpacity>
-      <Image source={imgSearch} style={styles.icon}></Image>
-    </TouchableOpacity>
+      <TouchableOpacity>
+        <Image source={imgSearch} style={styles.icon}></Image>
+      </TouchableOpacity>
 
-    <TouchableOpacity>
-      <Image source={imgAdd} style={styles.icon}></Image>
-    </TouchableOpacity>
+      <TouchableOpacity>
+        <Image source={imgAdd} style={styles.icon}></Image>
+      </TouchableOpacity>
 
-    <TouchableOpacity>
-      <Image source={imgLove} style={styles.icon}></Image>
-    </TouchableOpacity>
+      <TouchableOpacity>
+        <Image source={imgLove} style={styles.icon}></Image>
+      </TouchableOpacity>
 
-    <TouchableOpacity>
-      <Image source={imgProfile} style={styles.icon}></Image>
-    </TouchableOpacity>
-  </View>
+      <TouchableOpacity>
+        <Image source={imgProfile} style={styles.icon}></Image>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const PostContainer = props => {
-  // console.log(props);
   return (
     <View style={styles.postContainer}>
       <View style={styles.postHeader}>
@@ -87,7 +83,23 @@ const PostContainer = props => {
   );
 };
 
+const PostList = props => {
+  return (
+    <View style={styles.bodyContainer}>
+      <FlatList
+        data={props.post}
+        renderItem={(item, index) => <PostContainer item={item} />}
+        keyExtractor={item => item.id.toString()}
+      />
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
+  bodyContainer: {
+    flex: 14,
+    backgroundColor: 'white',
+  },
   headerTab: {
     flex: 1,
     backgroundColor: 'white',
@@ -145,4 +157,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export {PostContainer,HomeHeader,HomeFooter};
+export {PostContainer, HomeHeader, HomeFooter, PostList};
