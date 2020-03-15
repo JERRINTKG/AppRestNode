@@ -33,25 +33,27 @@ const HomeHeader = props => {
 };
 
 const HomeFooter = props => {
+  // console.log(props.clickHandler);
+  
   return (
     <View style={styles.footerTab}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>props.clickHandler('home')}>
         <Image source={imgHome} style={styles.icon}></Image>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>props.clickHandler('search')}>
         <Image source={imgSearch} style={styles.icon}></Image>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>props.clickHandler('add')}>
         <Image source={imgAdd} style={styles.icon}></Image>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>props.clickHandler('likes')}>
         <Image source={imgLove} style={styles.icon}></Image>
       </TouchableOpacity>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={()=>props.clickHandler('profile')}>
         <Image source={imgProfile} style={styles.icon}></Image>
       </TouchableOpacity>
     </View>

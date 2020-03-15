@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView,Text } from 'react-native';
 import serviceWrapper from '../../network/Services';
 import { PostList, HomeHeader, HomeFooter } from "../../components/Home.components";
 
@@ -7,6 +7,7 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      screen : 'home',
       data: [
         {
           id: 0,
@@ -84,13 +85,28 @@ class Home extends React.Component {
     };
   }
 
+  viewRender = (screen)=>{
+    switch(screen){
+      case "home": return <PostList post={this.state.data} />;
+      case "search": return <Text style={{flex:14}}>Search</Text>;
+      case "add": return <Text style={{flex:14}}>Add</Text>;
+      case "likes": return <Text style={{flex:14}}>Likes</Text>;
+      case "profile": return <Text style={{flex:14}}>Profile</Text>;
+    }
+  }
+
+  viewChage(data){
+    this.setState({screen:data});
+  }
+
   render() {
-    let {data} = this.state;
+    let {data,screen} = this.state;
     return (
       <SafeAreaView style={{flex: 1}}>
         <HomeHeader />
-        <PostList post={data} />
-        <HomeFooter />
+        {/* <PostList post={data} /> */}
+        {this.viewRender(screen)}
+        <HomeFooter clickHandler={(data)=>{this.viewChage(data)}}/>
       </SafeAreaView>
     );
   }
